@@ -23,8 +23,6 @@ export default function Home() {
           returnDuration={1.5}
         />
       </div>
-      {/* Translucent overlay layer */}
-      <div className="fixed inset-0 -z-40 bg-overlay" />
       <div className="relative z-10">
         <Navigation />
         <HeroSection />

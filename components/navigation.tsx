@@ -54,8 +54,10 @@ export function Navigation() {
               )}
             </button>
           )}
-          <Button size="sm" className="glow">
-            Resume
+          <Button size="sm" className="glow" asChild>
+            <a href="/Kaushal_Resume.pdf" download="Kaushal_Loya_Resume.pdf">
+              Resume
+            </a>
           </Button>
         </div>
 
@@ -98,8 +100,10 @@ export function Navigation() {
                 )}
               </button>
             )}
-            <Button size="sm" className="glow w-full">
-              Resume
+            <Button size="sm" className="glow w-full" asChild>
+              <a href="/Kaushal_Resume.pdf" download="Kaushal_Loya_Resume.pdf">
+                Resume
+              </a>
             </Button>
           </div>
         </div>
