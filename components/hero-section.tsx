@@ -2,24 +2,51 @@
 
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowDown, Github, Linkedin, Mail, Instagram } from "lucide-react"
+import { ArrowDown, Github, Linkedin, Mail, Instagram, Sun, Moon, Sunset } from "lucide-react"
 
 export function HeroSection() {
   const [titleIndex, setTitleIndex] = useState(0)
-  const titles = ["Software Engineer", "AI Enthusiast", "Full-Stack Developer"]
+  const [greeting, setGreeting] = useState("")
+  const titles = ["Software Engineer", "AI Enthusiast", "Full-Stack Developer", "Explorer"]
+
+  useEffect(() => {
+    // Set greeting based on time
+    const hour = new Date().getHours()
+    if (hour < 12) {
+      setGreeting("Good morning. Have a good day!")
+    } else if (hour < 18) {
+      setGreeting("Good afternoon. Have a good day!")
+    } else {
+      setGreeting("Good evening!")
+    }
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
       setTitleIndex((prev) => (prev + 1) % titles.length)
     }, 3000)
     return () => clearInterval(interval)
-  }, [])
+  }, [titles.length])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 pt-20">
       <div className="container mx-auto text-center">
         <div className="glass-hero p-8 md:p-12 rounded-3xl max-w-5xl mx-auto">
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+            {/* Greeting Badge - Top Center */}
+            {greeting && (
+              <div className="flex justify-center items-center gap-2 mb-6 animate-in fade-in slide-in-from-top duration-700">
+                {new Date().getHours() < 12 ? (
+                  <Sun className="h-5 w-5 text-primary/70" />
+                ) : new Date().getHours() < 18 ? (
+                  <Sunset className="h-5 w-5 text-primary/70" />
+                ) : (
+                  <Moon className="h-5 w-5 text-primary/70" />
+                )}
+                <span className="text-lg md:text-xl text-muted-foreground font-semibold">{greeting}</span>
+              </div>
+            )}
+
             {/* Profile Photo and Name */}
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
               {/* Profile Photo */}
