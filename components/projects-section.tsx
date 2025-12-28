@@ -6,53 +6,23 @@ import { ExternalLink, Github } from "lucide-react"
 
 const projects = [
   {
-    title: "AI-Powered Chat Application",
+    title: "JobGenie – AI-Powered Career Assistant",
     description:
-      "Real-time chat app with intelligent message suggestions and sentiment analysis using natural language processing.",
-    tech: ["Next.js", "OpenAI", "PostgreSQL", "WebSocket"],
-    github: "https://github.com",
-    demo: "https://demo.com",
+      "Intelligent job search agent that automates finding job listings on company career pages, extracts relevant details, and matches them with user preferences.",
+    tech: ["FastAPI", "Python", "Web Scraping", "AI Automation"],
+    github: "https://github.com/adithya-menon-r/JobGenie",
+    demo: "#",
   },
   {
-    title: "Task Management Platform",
+    title: "Sketch2Spec – AI-Powered UI Code Generator",
     description:
-      "Collaborative project management tool with Kanban boards, real-time updates, and team analytics dashboard.",
-    tech: ["React", "Node.js", "MongoDB", "Socket.io"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-  },
-  {
-    title: "E-Commerce Analytics",
-    description:
-      "Data visualization platform for e-commerce insights with predictive sales forecasting using machine learning.",
-    tech: ["Python", "TensorFlow", "FastAPI", "React"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-  },
-  {
-    title: "Code Snippet Manager",
-    description:
-      "Developer tool for organizing and sharing code snippets with syntax highlighting and search functionality.",
-    tech: ["TypeScript", "Next.js", "Supabase", "Tailwind"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-  },
-  {
-    title: "Weather Forecast App",
-    description:
-      "Beautiful weather application with hourly forecasts, interactive maps, and location-based recommendations.",
-    tech: ["React Native", "OpenWeather API", "Redux"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-  },
-  {
-    title: "Blog CMS Platform",
-    description: "Modern content management system with markdown support, SEO optimization, and built-in analytics.",
-    tech: ["Next.js", "MDX", "Prisma", "PostgreSQL"],
-    github: "https://github.com",
-    demo: "https://demo.com",
+      "AI-driven system that converts hand-drawn or digital wireframes into functional React/Next.js components with clean, production-ready code.",
+    tech: ["Next.js", "TypeScript", "Gemini API", "React"],
+    github: "https://github.com/Kaushal-Loya/Sketch2Spec",
+    demo: "https://sketch2spec.vercel.app/",
   },
 ]
+
 
 export function ProjectsSection() {
   return (

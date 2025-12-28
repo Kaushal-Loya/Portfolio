@@ -20,7 +20,7 @@ export function HeroSection() {
       <div className="container mx-auto text-center">
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
-            <span className="text-gradient">Your Name</span>
+            <span className="text-gradient">Kaushal Loya</span>
           </h1>
 
           <div className="h-12 md:h-16">
@@ -50,7 +50,7 @@ export function HeroSection() {
 
           <div className="flex gap-6 justify-center items-center pt-8">
             <a
-              href="https://github.com"
+              href="https://github.com/Kaushal-Loya"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors hover:scale-110 transform duration-200"
@@ -58,7 +58,7 @@ export function HeroSection() {
               <Github size={24} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/kaushal-loya-81207731b"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors hover:scale-110 transform duration-200"
@@ -66,7 +66,7 @@ export function HeroSection() {
               <Linkedin size={24} />
             </a>
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:kaushalloya5@gmail.com"
               className="text-muted-foreground hover:text-foreground transition-colors hover:scale-110 transform duration-200"
             >
               <Mail size={24} />
