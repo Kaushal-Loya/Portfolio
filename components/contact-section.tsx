@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Github, Linkedin, Mail } from "lucide-react"
+import { SpotlightCard } from "@/components/spotlight-card"
 
 export function ContactSection() {
   const handleSubmit = (e: React.FormEvent) => {
@@ -28,50 +29,53 @@ export function ContactSection() {
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Form */}
-            <div className="glass p-8 rounded-2xl">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium">
-                    Name
-                  </label>
-                  <Input id="name" placeholder="Your name" required className="bg-secondary/50" />
-                </div>
+            <SpotlightCard spotlightColor="rgba(0, 229, 255, 0.25)">
+              <div className="glass p-8 rounded-2xl">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-medium">
+                      Name
+                    </label>
+                    <Input id="name" placeholder="Your name" required className="bg-secondary/50" />
+                  </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">
-                    Email
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="your.email@example.com"
-                    required
-                    className="bg-secondary/50"
-                  />
-                </div>
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-sm font-medium">
+                      Email
+                    </label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="your.email@example.com"
+                      required
+                      className="bg-secondary/50"
+                    />
+                  </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell me about your project..."
-                    rows={5}
-                    required
-                    className="bg-secondary/50 resize-none"
-                  />
-                </div>
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="text-sm font-medium">
+                      Message
+                    </label>
+                    <Textarea
+                      id="message"
+                      placeholder="Tell me about your project..."
+                      rows={5}
+                      required
+                      className="bg-secondary/50 resize-none"
+                    />
+                  </div>
 
-                <Button type="submit" className="w-full glow">
-                  Send Message
-                </Button>
-              </form>
-            </div>
+                  <Button type="submit" className="w-full glow">
+                    Send Message
+                  </Button>
+                </form>
+              </div>
+            </SpotlightCard>
 
             {/* Contact Info */}
             <div className="space-y-8">
-              <div className="glass p-8 rounded-2xl space-y-6">
+              <SpotlightCard spotlightColor="rgba(0, 229, 255, 0.25)">
+                <div className="glass p-8 rounded-2xl space-y-6">
                 <h3 className="text-2xl font-semibold">Connect With Me</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
@@ -114,6 +118,7 @@ export function ContactSection() {
                   </a>
                 </div>
               </div>
+              </SpotlightCard>
             </div>
           </div>
         </div>

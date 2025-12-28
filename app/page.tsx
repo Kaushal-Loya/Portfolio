@@ -4,25 +4,41 @@ import { SkillsSection } from "@/components/skills-section"
 import { ProjectsSection } from "@/components/projects-section"
 import { ExperienceSection } from "@/components/experience-section"
 import { ContactSection } from "@/components/contact-section"
-import { FloatingBackground } from "@/components/floating-background"
+import { DotGrid } from "@/components/dot-grid"
 import { Navigation } from "@/components/navigation"
 
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden pt-24">
-      <FloatingBackground />
-      <Navigation />
-      <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <ExperienceSection />
-      <ContactSection />
-      <footer className="relative border-t border-border/50 py-8">
-        <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Your Name. Crafted with precision.</p>
-        </div>
-      </footer>
+      <div className="fixed inset-0 -z-50 h-screen w-screen">
+        <DotGrid
+          dotSize={10}
+          gap={15}
+          baseColor="#2d3748"
+          activeColor="#06b6d4"
+          proximity={120}
+          shockRadius={250}
+          shockStrength={5}
+          resistance={750}
+          returnDuration={1.5}
+        />
+      </div>
+      {/* Translucent overlay layer */}
+      <div className="fixed inset-0 -z-40 bg-overlay" />
+      <div className="relative z-10">
+        <Navigation />
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <ExperienceSection />
+        <ContactSection />
+        <footer className="relative border-t border-border/50 py-8">
+          <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
+            <p>© {new Date().getFullYear()} Your Name. Crafted with precision.</p>
+          </div>
+        </footer>
+      </div>
     </main>
   )
 }

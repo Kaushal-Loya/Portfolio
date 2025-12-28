@@ -1,3 +1,5 @@
+import { SpotlightCard } from "@/components/spotlight-card"
+
 export function AboutSection() {
   return (
     <section id="about" className="relative py-32 px-4">
@@ -7,7 +9,8 @@ export function AboutSection() {
             About <span className="text-gradient">Me</span>
           </h2>
 
-          <div className="glass p-8 md:p-12 rounded-2xl space-y-6">
+          <SpotlightCard spotlightColor="rgba(0, 229, 255, 0.25)">
+            <div className="glass p-8 md:p-12 rounded-2xl space-y-6">
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-balance">
               I'm a Computer Science & Engineering student with a passion for creating elegant solutions to complex
               problems. My journey in software development is driven by curiosity and a commitment to engineering
@@ -24,7 +27,8 @@ export function AboutSection() {
               Currently seeking opportunities to contribute to innovative projects and collaborate with talented teams
               pushing the boundaries of technology.
             </p>
-          </div>
+            </div>
+          </SpotlightCard>
         </div>
       </div>
     </section>

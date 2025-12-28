@@ -1,8 +1,9 @@
 "use client"
 
-import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github } from "lucide-react"
+import { TiltedCard } from "@/components/tilted-card"
+import { SpotlightCard } from "@/components/spotlight-card"
 
 const projects = [
   {
@@ -35,45 +36,55 @@ export function ProjectsSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, idx) => (
-              <Card
+              <TiltedCard
                 key={project.title}
-                className="glass p-6 hover:scale-105 transition-all duration-300 group hover:glow"
-                style={{
-                  animationDelay: `${idx * 100}ms`,
-                }}
+                containerHeight="100%"
+                containerWidth="100%"
+                rotateAmplitude={8}
+                scaleOnHover={1.05}
+                showTooltip={false}
               >
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">{project.title}</h3>
+                <SpotlightCard spotlightColor="rgba(0, 229, 255, 0.25)">
+                  <div
+                    className="glass p-6 rounded-2xl h-full flex flex-col transition-all duration-300 group hover:glow"
+                    style={{
+                      animationDelay: `${idx * 100}ms`,
+                    }}
+                  >
+                    <div className="space-y-4 flex-1 flex flex-col">
+                      <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">{project.title}</h3>
 
-                  <p className="text-muted-foreground leading-relaxed">{project.description}</p>
+                      <p className="text-muted-foreground leading-relaxed flex-1">{project.description}</p>
 
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 rounded-md bg-accent/20 text-xs text-accent-foreground border border-accent/30"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2 py-1 rounded-md bg-accent/20 text-xs text-muted-foreground border border-accent/30"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="flex gap-3 pt-2">
+                        <Button size="sm" variant="outline" asChild className="flex-1 bg-secondary/40 hover:bg-secondary/50 hover:text-muted-foreground dark:hover:text-muted-foreground border border-border/40 dark:border-muted/40 backdrop-blur-sm">
+                          <a href={project.github} target="_blank" rel="noopener noreferrer">
+                            <Github className="h-4 w-4 mr-2" />
+                            Code
+                          </a>
+                        </Button>
+                        <Button size="sm" asChild className="flex-1">
+                          <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="h-4 w-4 mr-2" />
+                            Demo
+                          </a>
+                        </Button>
+                      </div>
+                    </div>
                   </div>
-
-                  <div className="flex gap-3 pt-2">
-                    <Button size="sm" variant="outline" asChild className="flex-1 bg-transparent">
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="h-4 w-4 mr-2" />
-                        Code
-                      </a>
-                    </Button>
-                    <Button size="sm" asChild className="flex-1">
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        Demo
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </Card>
+                </SpotlightCard>
+              </TiltedCard>
             ))}
           </div>
         </div>

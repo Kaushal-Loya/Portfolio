@@ -43,7 +43,7 @@ export function HeroSection() {
                 <ArrowDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
               </a>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button size="lg" variant="outline" className="hover:text-muted-foreground dark:hover:text-muted-foreground" asChild>
               <a href="#contact">Download Resume</a>
             </Button>
           </div>

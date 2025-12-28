@@ -1,6 +1,7 @@
 "use client"
 
 import { Trophy, Users, Code, Award } from "lucide-react"
+import { SpotlightCard } from "@/components/spotlight-card"
 
 const experiences = [
   {
@@ -46,9 +47,9 @@ export function ExperienceSection() {
             {experiences.map((exp, idx) => {
               const Icon = exp.icon
               return (
-                <div
-                  key={exp.title}
-                  className="glass p-6 rounded-2xl hover:scale-105 transition-all duration-300 hover:glow"
+                <SpotlightCard key={exp.title} spotlightColor="rgba(0, 229, 255, 0.25)">
+                  <div
+                    className="glass p-6 rounded-2xl hover:scale-105 transition-all duration-300 hover:glow"
                   style={{
                     animationDelay: `${idx * 100}ms`,
                   }}
@@ -69,6 +70,7 @@ export function ExperienceSection() {
                     </div>
                   </div>
                 </div>
+                </SpotlightCard>
               )
             })}
           </div>

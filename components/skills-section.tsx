@@ -1,6 +1,7 @@
 "use client"
 
 import { Code2, Database, Brain, Wrench } from "lucide-react"
+import { SpotlightCard } from "@/components/spotlight-card"
 
 const skillCategories = [
   {
@@ -43,9 +44,9 @@ export function SkillsSection() {
             {skillCategories.map((category, idx) => {
               const Icon = category.icon
               return (
-                <div
-                  key={category.title}
-                  className="glass p-6 rounded-2xl hover:scale-105 transition-transform duration-300 group hover:glow"
+                <SpotlightCard key={category.title} spotlightColor="rgba(0, 229, 255, 0.25)">
+                  <div
+                    className="glass p-6 rounded-2xl hover:scale-105 transition-transform duration-300 group hover:glow"
                   style={{
                     animationDelay: `${idx * 100}ms`,
                   }}
@@ -68,6 +69,7 @@ export function SkillsSection() {
                     ))}
                   </div>
                 </div>
+                </SpotlightCard>
               )
             })}
           </div>

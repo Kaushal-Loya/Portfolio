@@ -35,6 +35,7 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --overlay-opacity: 0.5;
 }
 
 .dark {
@@ -70,6 +71,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+  --overlay-opacity: 0.5;
 }
 
 .light {
@@ -105,6 +107,7 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --overlay-opacity: 0.4;
 }
 
 @theme inline {
@@ -152,6 +155,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -163,10 +167,18 @@
   }
 
   .glass {
-    @apply bg-card/50 backdrop-blur-xl border border-border/50;
+    @apply bg-card backdrop-blur-xl border border-border/50;
   }
 
   .glow {
     box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+  }
+
+  .bg-overlay {
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, var(--overlay-opacity)) 0%,
+        rgba(0, 0, 0, calc(var(--overlay-opacity) * 0.8)) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 }
