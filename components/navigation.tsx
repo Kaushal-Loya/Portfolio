@@ -54,11 +54,6 @@ export function Navigation() {
               )}
             </button>
           )}
-          <Button size="sm" className="glow" asChild>
-            <a href="/Kaushal_Resume.pdf" download="Kaushal_Loya_Resume.pdf">
-              Resume
-            </a>
-          </Button>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -100,11 +95,6 @@ export function Navigation() {
                 )}
               </button>
             )}
-            <Button size="sm" className="glow w-full" asChild>
-              <a href="/Kaushal_Resume.pdf" download="Kaushal_Loya_Resume.pdf">
-                Resume
-              </a>
-            </Button>
           </div>
         </div>
       )}

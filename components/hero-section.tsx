@@ -89,7 +89,7 @@ export function HeroSection() {
                 </a>
               </Button>
               <Button size="lg" variant="outline" className="hover:text-muted-foreground dark:hover:text-muted-foreground" asChild>
-                <a href="/Kaushal_Resume.pdf" download="Kaushal_Loya_Resume.pdf">Download Resume</a>
+                <a href="/Kaushal_Resume.pdf" target="blank ">Download Resume</a>
               </Button>
             </div>
 
