@@ -1,19 +1,18 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Sun, Moon } from "lucide-react"
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    setMounted(true)
   }, [])
 
   const navItems = [
@@ -42,6 +41,19 @@ export function Navigation() {
               {item.label}
             </a>
           ))}
+          {mounted && (
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 rounded-lg hover:bg-accent/20 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? (
+                <Sun size={18} className="text-accent" />
+              ) : (
+                <Moon size={18} className="text-primary" />
+              )}
+            </button>
+          )}
           <Button size="sm" className="glow">
             Resume
           </Button>
@@ -67,6 +79,25 @@ export function Navigation() {
                 {item.label}
               </a>
             ))}
+            {mounted && (
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="flex items-center gap-2 p-2 rounded-lg hover:bg-accent/20 transition-colors w-full"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? (
+                  <>
+                    <Sun size={18} className="text-accent" />
+                    <span>Light Mode</span>
+                  </>
+                ) : (
+                  <>
+                    <Moon size={18} className="text-primary" />
+                    <span>Dark Mode</span>
+                  </>
+                )}
+              </button>
+            )}
             <Button size="sm" className="glow w-full">
               Resume
             </Button>
