@@ -163,7 +163,7 @@
   }
 
   .glass {
-    @apply bg-card/40 backdrop-blur-xl border border-border/50;
+    @apply bg-card/50 backdrop-blur-xl border border-border/50;
   }
 
   .glow {

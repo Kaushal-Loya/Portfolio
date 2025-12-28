@@ -9,7 +9,7 @@ import { Navigation } from "@/components/navigation"
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden">
+    <main className="relative min-h-screen overflow-hidden pt-24">
       <FloatingBackground />
       <Navigation />
       <HeroSection />

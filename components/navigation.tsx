@@ -24,7 +24,7 @@ export function Navigation() {
   ]
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass py-4" : "py-6"}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-lg bg-card/60 border-b border-border/50 ${scrolled ? "py-4 shadow-lg" : "py-6"}`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
         <a href="#" className="text-xl font-bold text-gradient">
           Kaushal Loya
