@@ -12,7 +12,6 @@ const projects = [
       "Intelligent job search agent that automates finding job listings on company career pages, extracts relevant details, and matches them with user preferences.",
     tech: ["FastAPI", "Python", "Web Scraping", "AI Automation"],
     github: "https://github.com/adithya-menon-r/JobGenie",
-    demo: "#",
   },
   {
     title: "Sketch2Spec – AI-Powered UI Code Generator",
@@ -75,12 +74,14 @@ export function ProjectsSection() {
                               Code
                             </a>
                           </Button>
-                          <Button size="sm" asChild className="flex-1">
-                            <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                              <ExternalLink className="h-4 w-4 mr-2" />
-                              Demo
-                            </a>
-                          </Button>
+                          {project.demo && (
+                            <Button size="sm" asChild className="flex-1">
+                              <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                                <ExternalLink className="h-4 w-4 mr-2" />
+                                Demo
+                              </a>
+                            </Button>
+                          )}
                         </div>
                       </div>
                     </div>

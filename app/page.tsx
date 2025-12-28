@@ -1,5 +1,6 @@
 import { HeroSection } from "@/components/hero-section"
 import { AboutSection } from "@/components/about-section"
+import { EducationSection } from "@/components/education-section"
 import { SkillsSection } from "@/components/skills-section"
 import { ProjectsSection } from "@/components/projects-section"
 import { ExperienceSection } from "@/components/experience-section"
@@ -27,13 +28,14 @@ export default function Home() {
         <Navigation />
         <HeroSection />
         <AboutSection />
+        <EducationSection />
         <SkillsSection />
         <ProjectsSection />
         <ExperienceSection />
         <ContactSection />
-        <footer className="relative border-t border-border/50 py-8">
+        <footer className="relative border-t border-border/50 backdrop-blur-lg bg-card/60 py-8">
           <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-            <p>© {new Date().getFullYear()} Your Name. Crafted with precision.</p>
+            <p>© {new Date().getFullYear()} Portfolio Crafted with precision.</p>
           </div>
         </footer>
       </div>
