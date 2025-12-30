@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Space_Grotesk } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
+import { SmoothScroll } from "@/components/smooth-scroll"
 import "./globals.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <SmoothScroll />
           {children}
           <Analytics />
         </ThemeProvider>

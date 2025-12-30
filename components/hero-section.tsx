@@ -14,7 +14,7 @@ export function HeroSection() {
     const hour = new Date().getHours()
     if (hour < 12) {
       setGreeting("Good morning. Have a good day!")
-    } else if (hour < 18) {
+    } else if (hour < 17) {
       setGreeting("Good afternoon. Have a good day!")
     } else {
       setGreeting("Good evening!")

@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect, useCallback, useMemo } from "react"
+import { useRef, useEffect, useCallback, useMemo, useState } from "react"
 import { gsap } from "gsap"
 import { InertiaPlugin } from "gsap/InertiaPlugin"
 
@@ -33,6 +33,8 @@ interface DotGridProps {
   dotSize?: number
   gap?: number
   baseColor?: string
+  baseColorLight?: string
+  baseColorDark?: string
   activeColor?: string
   proximity?: number
   speedTrigger?: number
@@ -68,6 +70,8 @@ export function DotGrid({
   dotSize = 16,
   gap = 32,
   baseColor = "#5227FF",
+  baseColorLight,
+  baseColorDark,
   activeColor = "#5227FF",
   proximity = 150,
   speedTrigger = 100,
@@ -93,7 +97,35 @@ export function DotGrid({
     lastY: 0,
   })
 
-  const baseRgb = useMemo(() => hexToRgb(baseColor), [baseColor])
+  // Theme detection
+  const [isDark, setIsDark] = useState(true)
+
+  useEffect(() => {
+    const checkTheme = () => {
+      const htmlElement = document.documentElement
+      setIsDark(htmlElement.classList.contains('dark'))
+    }
+
+    checkTheme()
+
+    // Watch for theme changes
+    const observer = new MutationObserver(checkTheme)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
+  // Use theme-specific color or fall back to baseColor
+  const currentBaseColor = useMemo(() => {
+    if (isDark && baseColorDark) return baseColorDark
+    if (!isDark && baseColorLight) return baseColorLight
+    return baseColor
+  }, [isDark, baseColorDark, baseColorLight, baseColor])
+
+  const baseRgb = useMemo(() => hexToRgb(currentBaseColor), [currentBaseColor])
   const activeRgb = useMemo(() => hexToRgb(activeColor), [activeColor])
 
   const circlePath = useMemo(() => {
@@ -166,7 +198,7 @@ export function DotGrid({
         const dy = dot.cy - py
         const dsq = dx * dx + dy * dy
 
-        let style = baseColor
+        let style = currentBaseColor
         if (dsq <= proxSq) {
           const dist = Math.sqrt(dsq)
           const t = 1 - dist / proximity

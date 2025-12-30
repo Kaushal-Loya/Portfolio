@@ -71,7 +71,7 @@ export function EducationSection() {
                                 </h2>
                             </div>
                             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                                My academic journey and qualifications
+                                My academic journey
                             </p>
                         </div>
 

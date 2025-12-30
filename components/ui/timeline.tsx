@@ -16,6 +16,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useEffect(() => {
     if (ref.current) {
@@ -26,11 +27,63 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 10%", "end 50%"],
+    offset: ["start 75%", "end 50%"],
   });
 
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+
+  // Track active timeline item with better bidirectional scroll handling
+  useEffect(() => {
+    const itemRefs = ref.current?.querySelectorAll('[data-timeline-item]');
+    if (!itemRefs || itemRefs.length === 0) return;
+
+    const updateActiveItem = () => {
+      const viewportCenter = window.innerHeight / 2;
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      itemRefs.forEach((item, index) => {
+        const rect = item.getBoundingClientRect();
+        const itemCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(itemCenter - viewportCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      // Only update if the closest item is reasonably in view
+      const closestRect = itemRefs[closestIndex].getBoundingClientRect();
+      const isInView = closestRect.top < window.innerHeight * 0.8 &&
+        closestRect.bottom > window.innerHeight * 0.2;
+
+      if (isInView) {
+        setActiveIndex(closestIndex);
+      }
+    };
+
+    // Use throttled scroll listener for better performance
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveItem();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    // Initial check
+    updateActiveItem();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [data]);
 
   return (
     <div
@@ -41,23 +94,51 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         {data.map((item, index) => (
           <div
             key={index}
+            data-timeline-item
             className="flex justify-start pt-4 md:pt-20 md:gap-10"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-background flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-muted border border-border p-2" />
+                <motion.div
+                  className={`h-4 w-4 rounded-full border p-2 transition-all duration-300 ${activeIndex === index
+                    ? 'bg-primary border-primary shadow-[0_0_20px_rgba(96,165,250,0.6)]'
+                    : 'bg-muted border-border'
+                    }`}
+                  animate={{
+                    scale: activeIndex === index ? 1.2 : 1,
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-muted-foreground">
+              <motion.h3
+                className={`hidden md:block text-xl md:pl-20 md:text-5xl font-bold transition-colors duration-300 ${activeIndex === index ? 'text-foreground' : 'text-muted-foreground'
+                  }`}
+                animate={{
+                  opacity: activeIndex === index ? 1 : 0.6,
+                }}
+                transition={{ duration: 0.3 }}
+              >
                 {item.title}
-              </h3>
+              </motion.h3>
             </div>
 
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-muted-foreground">
+            <motion.div
+              className={`relative pl-20 pr-4 md:pl-4 w-full transition-all duration-300 ${activeIndex === index
+                  ? 'md:bg-card/30 md:backdrop-blur-sm md:border md:border-border/30 md:rounded-2xl md:p-6 md:shadow-lg'
+                  : ''
+                }`}
+              animate={{
+                opacity: activeIndex === index ? 1 : 0.4,
+                scale: activeIndex === index ? 1 : 0.98,
+              }}
+              transition={{ duration: 0.3 }}
+            >
+              <h3 className={`md:hidden block text-2xl mb-4 text-left font-bold transition-colors duration-300 ${activeIndex === index ? 'text-foreground' : 'text-muted-foreground'
+                }`}>
                 {item.title}
               </h3>
               {item.content}{" "}
-            </div>
+            </motion.div>
           </div>
         ))}
         <div
