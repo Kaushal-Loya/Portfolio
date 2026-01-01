@@ -3,121 +3,63 @@
 import { useRef, useState } from "react"
 
 interface TiltedCardProps {
-  imageSrc?: string
-  altText?: string
-  captionText?: string
-  containerHeight?: string
-  containerWidth?: string
-  imageHeight?: string
-  imageWidth?: string
-  rotateAmplitude?: number
-  scaleOnHover?: number
-  showMobileWarning?: boolean
-  showTooltip?: boolean
-  displayOverlayContent?: boolean
-  overlayContent?: React.ReactNode
-  children?: React.ReactNode
+    children: React.ReactNode
+    className?: string
+    containerHeight?: string
+    containerWidth?: string
+    rotateAmplitude?: number
+    scaleOnHover?: number
+    showTooltip?: boolean
 }
 
 export function TiltedCard({
-  imageSrc,
-  altText = "",
-  captionText = "",
-  containerHeight = "auto",
-  containerWidth = "100%",
-  imageHeight,
-  imageWidth,
-  rotateAmplitude = 15,
-  scaleOnHover = 1.1,
-  showMobileWarning = false,
-  showTooltip = true,
-  displayOverlayContent = true,
-  overlayContent,
-  children,
+    children,
+    className = "",
+    containerHeight = "auto",
+    containerWidth = "auto",
+    rotateAmplitude = 10,
+    scaleOnHover = 1.02,
+    showTooltip = false
 }: TiltedCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null)
-  const [rotation, setRotation] = useState({ x: 0, y: 0 })
-  const [scale, setScale] = useState(1)
-  const [isHovering, setIsHovering] = useState(false)
+    const cardRef = useRef<HTMLDivElement>(null)
+    const [transform, setTransform] = useState("")
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!cardRef.current) return
 
-    const rect = cardRef.current.getBoundingClientRect()
-    const centerX = rect.width / 2
-    const centerY = rect.height / 2
-    const mouseX = e.clientX - rect.left
-    const mouseY = e.clientY - rect.top
+        const card = cardRef.current
+        const rect = card.getBoundingClientRect()
+        const x = e.clientX - rect.left
+        const y = e.clientY - rect.top
 
-    const rotateY = ((mouseX - centerX) / centerX) * rotateAmplitude
-    const rotateX = ((centerY - mouseY) / centerY) * rotateAmplitude
+        const centerX = rect.width / 2
+        const centerY = rect.height / 2
 
-    setRotation({ x: rotateX, y: rotateY })
-    setScale(scaleOnHover)
-  }
+        const rotateX = ((y - centerY) / centerY) * -rotateAmplitude
+        const rotateY = ((x - centerX) / centerX) * rotateAmplitude
 
-  const handleMouseLeave = () => {
-    setRotation({ x: 0, y: 0 })
-    setScale(1)
-    setIsHovering(false)
-  }
+        setTransform(
+            `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${scaleOnHover}, ${scaleOnHover}, ${scaleOnHover})`
+        )
+    }
 
-  const handleMouseEnter = () => {
-    setIsHovering(true)
-  }
+    const handleMouseLeave = () => {
+        setTransform("")
+    }
 
-  return (
-    <div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onMouseEnter={handleMouseEnter}
-      style={{
-        height: containerHeight,
-        width: containerWidth,
-        perspective: "1000px",
-        transition: "transform 0.1s ease-out",
-      }}
-      className="relative"
-    >
-      <div
-        style={{
-          transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) scale(${scale})`,
-          transformStyle: "preserve-3d",
-          transition: isHovering ? "transform 0.1s ease-out" : "transform 0.3s ease-out",
-        }}
-        className="w-full h-full"
-      >
-        {imageSrc ? (
-          <div className="relative w-full h-full rounded-lg overflow-hidden">
-            <img
-              src={imageSrc}
-              alt={altText}
-              height={imageHeight}
-              width={imageWidth}
-              className="w-full h-full object-cover"
-            />
-            {displayOverlayContent && overlayContent && (
-              <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                {overlayContent}
-              </div>
-            )}
-            {captionText && (
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                <p className="text-white text-sm font-semibold">{captionText}</p>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div className="w-full h-full">{children}</div>
-        )}
-      </div>
-
-      {showTooltip && isHovering && (
-        <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black/80 text-white px-3 py-1 rounded text-xs whitespace-nowrap pointer-events-none">
-          {captionText || "Hover to tilt"}
+    return (
+        <div
+            ref={cardRef}
+            className={`transition-transform duration-300 ease-out ${className}`}
+            style={{
+                transform,
+                height: containerHeight,
+                width: containerWidth
+            }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+        >
+            {children}
         </div>
-      )}
-    </div>
-  )
+    )
 }

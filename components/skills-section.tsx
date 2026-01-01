@@ -41,8 +41,9 @@ export function SkillsSection() {
               Technical <span className="text-gradient">Skills</span>
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {skillCategories.map((category, idx) => {
+            {/* First 3 cards */}
+            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+              {skillCategories.slice(0, 3).map((category, idx) => {
                 const Icon = category.icon
                 return (
                   <SpotlightCard key={category.title} spotlightColor="rgba(0, 229, 255, 0.25)">
@@ -50,6 +51,41 @@ export function SkillsSection() {
                       className="glass p-6 rounded-2xl hover:scale-105 transition-transform duration-300 group hover:glow"
                       style={{
                         animationDelay: `${idx * 100}ms`,
+                      }}
+                    >
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="p-2 rounded-lg bg-primary/10">
+                          <Icon className="h-6 w-6 text-primary" />
+                        </div>
+                        <h3 className="text-xl font-semibold">{category.title}</h3>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {category.skills.map((skill) => (
+                          <span
+                            key={skill}
+                            className="px-3 py-1 rounded-full bg-secondary text-sm text-secondary-foreground border border-border/50"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </SpotlightCard>
+                )
+              })}
+            </div>
+
+            {/* Last 2 cards centered */}
+            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto">
+              {skillCategories.slice(3).map((category, idx) => {
+                const Icon = category.icon
+                return (
+                  <SpotlightCard key={category.title} spotlightColor="rgba(0, 229, 255, 0.25)">
+                    <div
+                      className="glass p-6 rounded-2xl hover:scale-105 transition-transform duration-300 group hover:glow"
+                      style={{
+                        animationDelay: `${(idx + 3) * 100}ms`,
                       }}
                     >
                       <div className="flex items-center gap-3 mb-4">
