@@ -10,11 +10,11 @@ gsap.registerPlugin(InertiaPlugin)
 
 const throttle = (func: Function, limit: number) => {
   let lastCall = 0
-  return function (...args: any[]) {
+  return (...args: any[]) => {
     const now = performance.now()
     if (now - lastCall >= limit) {
-      lastCall = now;
-      (func as any).apply(this, args)
+      lastCall = now
+      func(...args)
     }
   }
 }
@@ -225,7 +225,7 @@ export function DotGrid({
   useEffect(() => {
     buildGrid()
     let ro: ResizeObserver | null = null
-    if ("ResizeObserver" in window) {
+    if (typeof ResizeObserver !== "undefined") {
       ro = new ResizeObserver(buildGrid)
       wrapperRef.current && ro.observe(wrapperRef.current)
     } else {

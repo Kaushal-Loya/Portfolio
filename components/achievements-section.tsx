@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { Trophy, Users, Award } from "lucide-react";
+import { Trophy, Users  ,Mic } from "lucide-react";
+import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 
 interface Achievement {
     icon: typeof Trophy;
@@ -29,8 +30,8 @@ const achievements: Achievement[] = [
         image: "/Hackathon.jpeg"
     },
     {
-        icon: Award,
-        category: "Leadership",
+        icon: Mic,
+        category: "Debate",
         title: "Model United Nations – ECOSOC Committee",
         date: "2024",
         description: "Represented Suriname as a delegate in discussions on \"Transition from relief to development\".",
@@ -78,7 +79,7 @@ function AchievementCard({ achievement, index }: { achievement: Achievement; ind
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="perspective-1000 h-[480px] w-full"
+            className="perspective-1000 h-[480px] w-[380px]"
         >
             <motion.div
                 className="relative h-full w-full cursor-pointer"
@@ -166,34 +167,6 @@ function AchievementCard({ achievement, index }: { achievement: Achievement; ind
 }
 
 export function AchievementsSection() {
-    const scrollRef = React.useRef<HTMLDivElement>(null);
-    const [canScrollLeft, setCanScrollLeft] = React.useState(false);
-    const [canScrollRight, setCanScrollRight] = React.useState(true);
-
-    const checkScroll = () => {
-        if (scrollRef.current) {
-            const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-            setCanScrollLeft(scrollLeft > 0);
-            setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-        }
-    };
-
-    React.useEffect(() => {
-        checkScroll();
-        window.addEventListener('resize', checkScroll);
-        return () => window.removeEventListener('resize', checkScroll);
-    }, []);
-
-    const scroll = (direction: 'left' | 'right') => {
-        if (scrollRef.current) {
-            const scrollAmount = 400;
-            scrollRef.current.scrollBy({
-                left: direction === 'left' ? -scrollAmount : scrollAmount,
-                behavior: 'smooth'
-            });
-        }
-    };
-
     return (
         <section id="achievements" className="relative py-32 px-4">
             <div className="container mx-auto max-w-7xl">
@@ -205,57 +178,15 @@ export function AchievementsSection() {
                         A showcase of accomplishments, leadership roles, and memorable experiences
                     </p>
 
-                    <div className="relative">
-                        {/* Navigation Arrows */}
-                        {canScrollLeft && (
-                            <button
-                                onClick={() => scroll('left')}
-                                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-primary/90 text-white shadow-lg hover:bg-primary transition-all hover:scale-110"
-                                aria-label="Scroll left"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="m15 18-6-6 6-6" />
-                                </svg>
-                            </button>
+                    <InfiniteMovingCards
+                        items={achievements}
+                        direction="left"
+                        speed="fast"
+                        pauseOnHover={true}
+                        renderItem={(achievement, index) => (
+                            <AchievementCard achievement={achievement} index={index} />
                         )}
-
-                        {canScrollRight && (
-                            <button
-                                onClick={() => scroll('right')}
-                                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-primary/90 text-white shadow-lg hover:bg-primary transition-all hover:scale-110"
-                                aria-label="Scroll right"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="m9 18 6-6-6-6" />
-                                </svg>
-                            </button>
-                        )}
-
-                        {/* Carousel Container */}
-                        <div
-                            ref={scrollRef}
-                            onScroll={checkScroll}
-                            className={`flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth py-6 ${achievements.length <= 3 ? 'justify-center' : 'justify-start'
-                                }`}
-                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                        >
-                            {achievements.map((achievement, index) => (
-                                <div
-                                    key={achievement.title}
-                                    className={`flex-shrink-0 ${achievements.length === 1 ? 'w-full max-w-[400px]' :
-                                            achievements.length === 2 ? 'w-full md:w-[calc(50%-12px)] max-w-[400px]' :
-                                                achievements.length === 3 ? 'w-full md:w-[calc(33.333%-16px)] max-w-[380px]' :
-                                                    'w-[320px]'
-                                        }`}
-                                >
-                                    <AchievementCard
-                                        achievement={achievement}
-                                        index={index}
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    />
                 </div>
             </div>
         </section>
