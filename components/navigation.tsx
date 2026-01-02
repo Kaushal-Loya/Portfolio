@@ -31,6 +31,20 @@ export function Navigation() {
     { label: "Contact", href: "#contact" },
   ]
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    const targetId = href.replace("#", "")
+    const targetElement = document.getElementById(targetId)
+
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      })
+      setMobileMenuOpen(false)
+    }
+  }
+
   if (!mounted) {
     return (
       <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-lg bg-card/60 border-b border-border/50 py-6">
@@ -43,6 +57,7 @@ export function Navigation() {
               <a
                 key={item.label}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
@@ -70,6 +85,7 @@ export function Navigation() {
             <a
               key={item.label}
               href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               {item.label}
@@ -104,8 +120,8 @@ export function Navigation() {
               <a
                 key={item.label}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
               </a>

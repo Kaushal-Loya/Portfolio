@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { Trophy, Users  ,Mic } from "lucide-react";
+import { Trophy, Users, Mic } from "lucide-react";
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 
 interface Achievement {
@@ -99,7 +99,7 @@ function AchievementCard({ achievement, index }: { achievement: Achievement; ind
                             alt={achievement.title}
                             className="h-full w-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/10" />
                         <div className="absolute inset-0 p-6 flex flex-col justify-between">
                             <div className="flex items-start justify-between">
                                 <span className="px-4 py-2 rounded-full bg-primary backdrop-blur-md text-primary-foreground text-sm font-bold border-2 border-primary/30 shadow-lg dark:bg-accent dark:text-accent-foreground dark:border-accent/30">
