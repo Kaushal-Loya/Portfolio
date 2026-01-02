@@ -26,7 +26,7 @@ const achievements: Achievement[] = [
             "Competed against multiple teams",
             "Recognized for implementation quality"
         ],
-        image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2940&auto=format&fit=crop"
+        image: "/Hackathon.jpeg"
     },
     {
         icon: Award,
