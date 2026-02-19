@@ -6,18 +6,15 @@ import { GraduationCap } from "lucide-react"
 export function EducationSection() {
     const educationData = [
         {
-            title: "2023 - 2027",
+            title: "2019 - 2021",
             content: (
                 <div>
                     <div className="mb-4">
                         <h3 className="text-xl font-semibold text-foreground mb-2">
-                            Undergraduation
+                            Secondary Education (10th Grade)
                         </h3>
                         <p className="text-sm text-primary font-medium mb-2">
-                            Amrita Vishwa Vidyapeetham, Coimbatore
-                        </p>
-                        <p className="text-sm text-muted-foreground mb-4">
-                            B.Tech in Computer Science & Engineering
+                            Lokseva e School, Pune
                         </p>
                     </div>
                 </div>
@@ -42,15 +39,18 @@ export function EducationSection() {
             ),
         },
         {
-            title: "2019 - 2021",
+            title: "2023 - 2027",
             content: (
                 <div>
                     <div className="mb-4">
                         <h3 className="text-xl font-semibold text-foreground mb-2">
-                            Secondary Education (10th Grade)
+                            Undergraduation
                         </h3>
                         <p className="text-sm text-primary font-medium mb-2">
-                            Lokseva e School, Pune
+                            Amrita Vishwa Vidyapeetham, Coimbatore
+                        </p>
+                        <p className="text-sm text-muted-foreground mb-4">
+                            B.Tech in Computer Science & Engineering
                         </p>
                     </div>
                 </div>
