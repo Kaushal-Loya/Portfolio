@@ -5,7 +5,7 @@ import { SpotlightCard } from "@/components/spotlight-card"
 
 export function ContactSection() {
   return (
-    <section id="contact" className="relative py-32 px-4">
+    <section id="contact" className="relative pb-32 pt-8 px-4">
       <div className="container mx-auto max-w-4xl">
         <div className="glass p-8 md:p-12 rounded-3xl">
           <div className="space-y-16">

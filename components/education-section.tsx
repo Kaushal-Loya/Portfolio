@@ -59,7 +59,7 @@ export function EducationSection() {
     ]
 
     return (
-        <section id="education" className="relative py-32 px-4">
+        <section id="education" className="relative pb-32 pt-8 px-4">
             <div className="container mx-auto">
                 <div className="glass p-8 md:p-12 rounded-3xl">
                     <div className="space-y-8">

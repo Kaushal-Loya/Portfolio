@@ -168,7 +168,7 @@ function AchievementCard({ achievement, index }: { achievement: Achievement; ind
 
 export function AchievementsSection() {
     return (
-        <section id="achievements" className="relative py-32 px-4">
+        <section id="achievements" className="relative pb-32 pt-8 px-4">
             <div className="container mx-auto max-w-7xl">
                 <div className="glass p-8 md:p-12 rounded-3xl">
                     <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">

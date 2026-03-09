@@ -26,7 +26,7 @@ const projects = [
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="relative py-32 px-4">
+    <section id="projects" className="relative pb-32 pt-8 px-4">
       <div className="container mx-auto">
         <div className="glass p-8 md:p-12 rounded-3xl">
           <div className="space-y-16">
@@ -35,8 +35,8 @@ export function ProjectsSection() {
             </h2>
 
             <div className={`grid gap-6 ${projects.length === 1 ? 'grid-cols-1 max-w-2xl mx-auto' :
-                projects.length === 2 ? 'grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto' :
-                  'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+              projects.length === 2 ? 'grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto' :
+                'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
               }`}>
               {projects.map((project, idx) => (
                 <TiltedCard

@@ -33,7 +33,7 @@ const skillCategories = [
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="relative py-32 px-4">
+    <section id="skills" className="relative pb-32 pt-8 px-4">
       <div className="container mx-auto">
         <div className="glass p-8 md:p-12 rounded-3xl">
           <div className="space-y-16">

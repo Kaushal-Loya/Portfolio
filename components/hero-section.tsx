@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowDown, Github, Linkedin, Mail, Instagram, Sun, Moon, Sunset } from "lucide-react"
+import Link from "next/link"
+import { ArrowRight, Github, Linkedin, Mail, Instagram, Sun, Moon, Sunset } from "lucide-react"
 
 export function HeroSection() {
   const [titleIndex, setTitleIndex] = useState(0)
@@ -29,7 +30,7 @@ export function HeroSection() {
   }, [titles.length])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 pt-20">
+    <section className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center px-4">
       <div className="container mx-auto text-center">
         <div className="glass-hero p-8 md:p-12 rounded-3xl max-w-5xl mx-auto">
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
@@ -83,10 +84,10 @@ export function HeroSection() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
               <Button size="lg" className="glow group" asChild>
-                <a href="#projects">
+                <Link href="/projects">
                   View Projects
-                  <ArrowDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
-                </a>
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
               <Button size="lg" variant="outline" className="hover:text-muted-foreground dark:hover:text-muted-foreground" asChild>
                 <a href="/Kaushal_Resume.pdf" target="blank ">Download Resume</a>
