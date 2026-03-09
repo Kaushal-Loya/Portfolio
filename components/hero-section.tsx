@@ -55,7 +55,7 @@ export function HeroSection() {
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full opacity-75 group-hover:opacity-100 blur transition duration-300"></div>
                 <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-background">
                   <img
-                    src="/Kaushal.jpeg"
+                    src="/Kaushal.png"
                     alt="Kaushal Loya"
                     className="w-full h-full object-cover"
                   />

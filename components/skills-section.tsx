@@ -1,115 +1,146 @@
 "use client"
 
-import { Code2, Database, Brain, Wrench } from "lucide-react"
 import { SpotlightCard } from "@/components/spotlight-card"
 
 const skillCategories = [
   {
     title: "Programming Languages",
-    icon: Code2,
-    skills: ["Python", "JavaScript", "C++", "C", "Java"],
+    skills: [
+      { name: "Python", icon: "python" },
+      { name: "JavaScript", icon: "js" },
+      { name: "TypeScript", icon: "ts" },
+      { name: "Java", icon: "java" },
+      { name: "C++", icon: "cpp" },
+      { name: "C", icon: "c" },
+    ],
   },
   {
     title: "Web Development",
-    icon: Code2,
-    skills: ["React", "React Native", "Next.js", "HTML", "CSS", "Tailwind CSS"],
+    skills: [
+      { name: "React", icon: "react" },
+      { name: "Next.js", icon: "nextjs" },
+      { name: "Tailwind", icon: "tailwind" },
+      { name: "HTML5", icon: "html" },
+      { name: "CSS3", icon: "css" },
+      { name: "Vite", icon: "vite" },
+      { name: "React Native", icon: "react" },
+    ],
   },
   {
     title: "Backend & Databases",
-    icon: Database,
-    skills: ["PostgreSQL", "MySQL", "MongoDB", "Node.js", "Express.js", "Django"],
+    skills: [
+      { name: "Node.js", icon: "nodejs" },
+      { name: "Express.js", icon: "express" },
+      { name: "Django", icon: "django" },
+      { name: "PostgreSQL", icon: "postgres" },
+      { name: "MySQL", icon: "mysql" },
+      { name: "MongoDB", icon: "mongodb" },
+    ],
   },
   {
     title: "Tools & Platforms",
-    icon: Wrench,
-    skills: ["Git", "Docker", "Linux", "VS Code", "Postman"],
+    skills: [
+      { name: "Git", icon: "git" },
+      { name: "Docker", icon: "docker" },
+      { name: "Linux", icon: "linux" },
+      { name: "VS Code", icon: "vscode" },
+      { name: "Postman", icon: "postman" },
+      { name: "Vercel", icon: "vercel" },
+    ],
   },
 ]
 
-export function SkillsSection() {
-  return (
-    <section id="skills" className="relative pb-32 pt-8 px-4">
-      <div className="container mx-auto">
-        <div className="glass p-8 md:p-12 rounded-3xl">
-          <div className="space-y-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-center">
-              Technical <span className="text-gradient">Skills</span>
-            </h2>
+interface SkillsSectionProps {
+  compact?: boolean
+  hideHeader?: boolean
+}
 
-            {/* First 3 cards */}
-            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-              {skillCategories.slice(0, 3).map((category, idx) => {
-                const Icon = category.icon
-                return (
-                  <SpotlightCard key={category.title} spotlightColor="rgba(0, 229, 255, 0.25)">
-                    <div
-                      className="glass p-6 rounded-2xl hover:scale-105 transition-transform duration-300 group hover:glow"
-                      style={{
-                        animationDelay: `${idx * 100}ms`,
-                      }}
-                    >
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="p-2 rounded-lg bg-primary/10">
-                          <Icon className="h-6 w-6 text-primary" />
-                        </div>
-                        <h3 className="text-xl font-semibold">{category.title}</h3>
-                      </div>
+export function SkillsSection({ compact = false, hideHeader = false }: SkillsSectionProps) {
+  const content = (
+    <div className={`space-y-12 ${compact ? "" : "glass p-8 md:p-12 rounded-3xl"}`}>
+      {!hideHeader && (
+        <h2 className="text-3xl md:text-5xl font-bold text-center">
+          Technical <span className="text-gradient">Skills</span>
+        </h2>
+      )}
 
-                      <div className="flex flex-wrap gap-2">
-                        {category.skills.map((skill) => (
-                          <span
-                            key={skill}
-                            className="px-3 py-1 rounded-full bg-secondary text-sm text-secondary-foreground border border-border/50"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
+      <div className={`${compact ? "space-y-8" : "space-y-12"}`}>
+        {skillCategories.map((category, catIdx) => (
+          <div key={category.title} className="space-y-4">
+            <h3 className={`font-semibold text-muted-foreground/80 pl-2 border-l-2 border-primary/50 ${compact ? "text-lg" : "text-xl"}`}>
+              {category.title}
+            </h3>
+
+            <div className={`flex flex-wrap ${compact ? "gap-4 justify-start" : "gap-6 md:gap-8 justify-center md:justify-start"}`}>
+              {category.skills.map((skill, skillIdx) => (
+                <div
+                  key={skill.name}
+                  className="flex flex-col items-center gap-2 group"
+                  style={{
+                    animation: `fade-in-up 0.5s ease-out forwards ${catIdx * 0.1 + skillIdx * 0.05}s`,
+                    opacity: 0
+                  }}
+                >
+                  <div className="relative">
+                    <div className="absolute -inset-1 bg-primary/20 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className={`relative glass rounded-lg border border-white/10 group-hover:border-primary/50 transition-all duration-300 group-hover:scale-110 ${compact ? "p-2" : "p-3"}`}>
+                      <img
+                        src={`https://skillicons.dev/icons?i=${skill.icon}`}
+                        alt={skill.name}
+                        className={`${compact ? "w-8 h-8 md:w-10 md:h-10" : "w-12 h-12 md:w-14 md:h-14"} object-contain`}
+                        loading="lazy"
+                      />
                     </div>
-                  </SpotlightCard>
-                )
-              })}
-            </div>
-
-            {/* Last card centered */}
-            <div className="flex justify-center max-w-6xl mx-auto">
-              {skillCategories.slice(3).map((category, idx) => {
-                const Icon = category.icon
-                return (
-                  <div key={category.title} className="w-full max-w-md px-3">
-                    <SpotlightCard spotlightColor="rgba(0, 229, 255, 0.25)">
-                      <div
-                        className="glass p-6 rounded-2xl hover:scale-105 transition-transform duration-300 group hover:glow"
-                        style={{
-                          animationDelay: `${(idx + 3) * 100}ms`,
-                        }}
-                      >
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="p-2 rounded-lg bg-primary/10">
-                            <Icon className="h-6 w-6 text-primary" />
-                          </div>
-                          <h3 className="text-xl font-semibold">{category.title}</h3>
-                        </div>
-
-                        <div className="flex flex-wrap gap-2">
-                          {category.skills.map((skill) => (
-                            <span
-                              key={skill}
-                              className="px-3 py-1 rounded-full bg-secondary text-sm text-secondary-foreground border border-border/50"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </SpotlightCard>
                   </div>
-                )
-              })}
+                  <span className={`${compact ? "text-[8px] md:text-[10px]" : "text-[10px] md:text-xs"} font-bold text-muted-foreground group-hover:text-primary transition-colors tracking-tighter md:tracking-widest uppercase`}>
+                    {skill.name}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
+        ))}
       </div>
+    </div>
+  )
+
+  if (compact) {
+    return (
+      <div className="relative">
+        {content}
+        <style jsx>{`
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+      </div>
+    )
+  }
+
+  return (
+    <section id="skills" className="relative pb-32 pt-4 px-4">
+      <div className="container mx-auto max-w-6xl">
+        {content}
+      </div>
+      <style jsx>{`
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </section>
   )
 }
