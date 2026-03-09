@@ -20,11 +20,6 @@ const skillCategories = [
     skills: ["PostgreSQL", "MySQL", "MongoDB", "Node.js", "Express.js", "Django"],
   },
   {
-    title: "AI / ML",
-    icon: Brain,
-    skills: ["Scikit-learn", "pandas", "NumPy", "Matplotlib"],
-  },
-  {
     title: "Tools & Platforms",
     icon: Wrench,
     skills: ["Git", "Docker", "Linux", "VS Code", "Postman"],
@@ -76,37 +71,39 @@ export function SkillsSection() {
               })}
             </div>
 
-            {/* Last 2 cards centered */}
-            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto">
+            {/* Last card centered */}
+            <div className="flex justify-center max-w-6xl mx-auto">
               {skillCategories.slice(3).map((category, idx) => {
                 const Icon = category.icon
                 return (
-                  <SpotlightCard key={category.title} spotlightColor="rgba(0, 229, 255, 0.25)">
-                    <div
-                      className="glass p-6 rounded-2xl hover:scale-105 transition-transform duration-300 group hover:glow"
-                      style={{
-                        animationDelay: `${(idx + 3) * 100}ms`,
-                      }}
-                    >
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="p-2 rounded-lg bg-primary/10">
-                          <Icon className="h-6 w-6 text-primary" />
+                  <div key={category.title} className="w-full max-w-md px-3">
+                    <SpotlightCard spotlightColor="rgba(0, 229, 255, 0.25)">
+                      <div
+                        className="glass p-6 rounded-2xl hover:scale-105 transition-transform duration-300 group hover:glow"
+                        style={{
+                          animationDelay: `${(idx + 3) * 100}ms`,
+                        }}
+                      >
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="p-2 rounded-lg bg-primary/10">
+                            <Icon className="h-6 w-6 text-primary" />
+                          </div>
+                          <h3 className="text-xl font-semibold">{category.title}</h3>
                         </div>
-                        <h3 className="text-xl font-semibold">{category.title}</h3>
-                      </div>
 
-                      <div className="flex flex-wrap gap-2">
-                        {category.skills.map((skill) => (
-                          <span
-                            key={skill}
-                            className="px-3 py-1 rounded-full bg-secondary text-sm text-secondary-foreground border border-border/50"
-                          >
-                            {skill}
-                          </span>
-                        ))}
+                        <div className="flex flex-wrap gap-2">
+                          {category.skills.map((skill) => (
+                            <span
+                              key={skill}
+                              className="px-3 py-1 rounded-full bg-secondary text-sm text-secondary-foreground border border-border/50"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  </SpotlightCard>
+                    </SpotlightCard>
+                  </div>
                 )
               })}
             </div>

@@ -7,11 +7,12 @@ import { SpotlightCard } from "@/components/spotlight-card"
 
 const projects = [
   {
-    title: "JobGenie – AI-Powered Career Assistant",
-    description:
-      "Intelligent job search agent that automates finding job listings on company career pages, extracts relevant details, and matches them with user preferences.",
-    tech: ["FastAPI", "Python", "Web Scraping", "AI Automation"],
-    github: "https://github.com/adithya-menon-r/JobGenie",
+    title: "Nexus - A Federated, Decentralized Networking Platform",
+    description: "A privacy-centric federated ecosystem for decentralized identity management.",
+    tech: ["React", "Go", "MongoDB", "Framer Motion", "Docker"],
+    status: "Ongoing",
+    github: "https://github.com/RiteeshTM/Federated-Decentralized-Social-Networking-Platform",
+    demo: "https://nexiverse.vercel.app/",
   },
   {
     title: "Sketch2Spec – AI-Powered UI Code Generator",
@@ -21,6 +22,20 @@ const projects = [
     github: "https://github.com/Kaushal-Loya/Sketch2Spec",
     demo: "https://sketch2spec.vercel.app/",
   },
+  {
+    title: "SecureEval – Cybersecurity Evaluation Platform",
+    description:
+      "A production-grade secure system for academic project evaluation featuring MFA, RBAC, and hybrid encryption (AES-256-GCM + RSA-2048).",
+    tech: ["React", "TypeScript", "Express", "MongoDB", "Web Crypto API"],
+    github: "https://github.com/Kaushal-Loya/Cyber-Project",
+  },
+  {
+    title: "JobGenie – AI-Powered Career Assistant",
+    description:
+      "Intelligent job search agent that automates finding job listings on company career pages, extracts relevant details, and matches them with user preferences.",
+    tech: ["FastAPI", "Python", "Web Scraping", "AI Automation"],
+    github: "https://github.com/adithya-menon-r/JobGenie",
+  },  
 ]
 
 
@@ -55,7 +70,14 @@ export function ProjectsSection() {
                       }}
                     >
                       <div className="space-y-4 flex-1 flex flex-col">
-                        <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">{project.title}</h3>
+                        <div className="flex items-start justify-between gap-2">
+                          <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">{project.title}</h3>
+                          {project.status === "Ongoing" && (
+                            <span className="px-2 py-1 rounded-full bg-primary/10 text-[10px] font-bold text-primary border border-primary/20 shrink-0">
+                              ONGOING
+                            </span>
+                          )}
+                        </div>
 
                         <p className="text-muted-foreground leading-relaxed flex-1">{project.description}</p>
 
