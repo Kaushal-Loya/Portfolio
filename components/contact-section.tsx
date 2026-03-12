@@ -5,10 +5,10 @@ import { SpotlightCard } from "@/components/spotlight-card"
 
 export function ContactSection() {
   return (
-    <section id="contact" className="relative pb-32 pt-8 px-4">
+    <section id="contact" className="relative flex-1 pb-12 pt-8 px-4 flex flex-col justify-center">
       <div className="container mx-auto max-w-4xl">
         <div className="glass p-8 md:p-12 rounded-3xl">
-          <div className="space-y-16">
+          <div className="space-y-10">
             <div className="text-center space-y-4">
               <h2 className="text-3xl md:text-5xl font-bold">
                 Get In <span className="text-gradient">Touch</span>
@@ -20,7 +20,7 @@ export function ContactSection() {
 
             <div className="max-w-2xl mx-auto">
               <SpotlightCard spotlightColor="rgba(0, 229, 255, 0.25)">
-                <div className="glass p-8 md:p-12 rounded-2xl space-y-6">
+                <div className="glass p-6 md:p-8 rounded-2xl space-y-4">
                   <h3 className="text-2xl font-semibold text-center">Connect With Me</h3>
                   <p className="text-muted-foreground leading-relaxed text-center">
                     I'm always open to discussing new projects, creative ideas, or opportunities to be part of your

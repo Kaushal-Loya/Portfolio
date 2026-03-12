@@ -39,7 +39,7 @@ export function AboutSection({ compact = false, hideHeader = false }: AboutSecti
   if (compact) return content
 
   return (
-    <section id="about" className="relative pb-12 pt-8 px-4">
+    <section id="about" className="relative pb-8 pt-8 px-4">
       {content}
     </section>
   )

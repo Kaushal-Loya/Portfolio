@@ -41,7 +41,7 @@ const projects = [
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="relative pb-32 pt-8 px-4">
+    <section id="projects" className="relative flex-1 pb-12 pt-8 px-4 flex flex-col justify-center">
       <div className="container mx-auto">
         <div className="glass p-8 md:p-12 rounded-3xl">
           <div className="space-y-16">

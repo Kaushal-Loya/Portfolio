@@ -259,9 +259,9 @@ export function AchievementsSection() {
     );
 
     return (
-        <section id="achievements" className="relative pb-32 pt-12 px-4">
+        <section id="achievements" className="relative flex-1 pb-12 pt-8 px-4 flex flex-col justify-center">
             <div className="container mx-auto max-w-5xl">
-                <div className="glass p-8 md:p-12 lg:p-16 rounded-[2.5rem] border border-white/5 space-y-12">
+                <div className="glass p-6 md:p-10 lg:p-12 rounded-[2.5rem] border border-white/5 space-y-8">
                     <div className="space-y-4 text-center">
                         <h2 className="text-4xl md:text-6xl font-bold">
                             My <span className="text-gradient">Achievements</span>

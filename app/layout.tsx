@@ -32,7 +32,7 @@ export default function RootLayout({
           <div className="fixed inset-0 -z-50 h-screen w-screen">
             <DotGrid
               dotSize={6}
-              gap={20}
+              gap={12}
               baseColorLight="#e8e8ea"
               baseColorDark="#2d3748"
               activeColor="#06b6d4"
@@ -45,10 +45,10 @@ export default function RootLayout({
           </div>
           <div className="relative z-10 flex flex-col min-h-screen">
             <Navigation />
-            <main className="flex-grow pt-20">
+            <main className="flex-grow pt-20 flex flex-col">
               {children}
             </main>
-            <footer className="relative border-t border-border/50 backdrop-blur-lg bg-card/60 py-8">
+            <footer className="relative border-t border-border/50 backdrop-blur-lg bg-card/60 py-4">
               <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
                 <p>© {new Date().getFullYear()} Kaushal Loya.</p>
               </div>

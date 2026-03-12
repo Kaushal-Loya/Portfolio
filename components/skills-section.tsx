@@ -57,7 +57,7 @@ interface SkillsSectionProps {
 
 export function SkillsSection({ compact = false, hideHeader = false }: SkillsSectionProps) {
   const content = (
-    <div className={`space-y-12 ${compact ? "" : "glass p-8 md:p-12 rounded-3xl"}`}>
+    <div className={`space-y-8 ${compact ? "" : "glass p-6 md:p-10 rounded-3xl"}`}>
       {!hideHeader && (
         <h2 className="text-3xl md:text-5xl font-bold text-center">
           Technical <span className="text-gradient">Skills</span>
@@ -125,7 +125,7 @@ export function SkillsSection({ compact = false, hideHeader = false }: SkillsSec
   }
 
   return (
-    <section id="skills" className="relative pb-32 pt-4 px-4">
+    <section id="skills" className="relative pb-12 pt-4 px-4">
       <div className="container mx-auto max-w-6xl">
         {content}
       </div>
