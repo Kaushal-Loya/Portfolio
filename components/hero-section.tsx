@@ -32,11 +32,14 @@ export function HeroSection() {
   return (
     <section className="relative flex-1 flex items-center justify-center px-4 py-4">
       <div className="container mx-auto text-center">
-        <div className="glass-hero p-2 md:p-4 rounded-3xl max-w-4xl mx-auto">
-          <div className="space-y-6 md:space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+        <div className="glass-hero p-2 md:p-4 rounded-3xl max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row animate-in fade-in slide-in-from-bottom-4 duration-1000">
+
+            {/* Left column: hero content */}
+            <div className="flex-1 space-y-6 md:space-y-8 flex flex-col items-center lg:pr-10">
             {/* Greeting Badge - Top Center */}
             {greeting && (
-              <div className="flex justify-center items-center gap-2 mb-6 animate-in fade-in slide-in-from-top duration-700">
+              <div className="flex justify-center items-center gap-2 animate-in fade-in slide-in-from-top duration-700">
                 {new Date().getHours() < 12 ? (
                   <Sun className="h-5 w-5 text-primary/70" />
                 ) : new Date().getHours() < 18 ? (
@@ -126,6 +129,32 @@ export function HeroSection() {
                 <Mail size={24} />
               </a>
             </div>
+            </div>
+
+            {/* Divider */}
+            <div className="hidden lg:block w-px bg-border/30 self-stretch mx-2"></div>
+            <div className="block lg:hidden h-px bg-border/30 my-2"></div>
+
+            {/* Right column: About Me description */}
+            <div className="flex-1 flex flex-col justify-center text-left space-y-4 lg:pl-10">
+              <h2 className="text-2xl md:text-3xl font-bold">
+                About <span className="text-gradient">Me</span>
+              </h2>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                I'm a Computer Science &amp; Engineering student who enjoys solving problems and building software that is simple, clean,
+                and useful. I like understanding how things work and turning ideas into working solutions through code.
+              </p>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                I mainly work on building scalable applications and exploring how software and artificial intelligence come together.
+                Whether it's designing a user-friendly interface or reliable backend logic, I enjoy the entire development
+                process.
+              </p>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                I'm currently looking for opportunities to learn, collaborate with motivated teams, and contribute to projects that
+                create real-world impact.
+              </p>
+            </div>
+
           </div>
         </div>
       </div>
