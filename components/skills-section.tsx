@@ -53,9 +53,10 @@ const skillCategories = [
 interface SkillsSectionProps {
   compact?: boolean
   hideHeader?: boolean
+  twoColumn?: boolean
 }
 
-export function SkillsSection({ compact = false, hideHeader = false }: SkillsSectionProps) {
+export function SkillsSection({ compact = false, hideHeader = false, twoColumn = false }: SkillsSectionProps) {
   const content = (
     <div className={`space-y-8 ${compact ? "" : "glass p-6 md:p-10 rounded-3xl"}`}>
       {!hideHeader && (
@@ -64,7 +65,7 @@ export function SkillsSection({ compact = false, hideHeader = false }: SkillsSec
         </h2>
       )}
 
-      <div className={`${compact ? "space-y-8" : "space-y-12"}`}>
+      <div className={twoColumn ? "grid grid-cols-1 md:grid-cols-2 gap-8" : `${compact ? "space-y-8" : "space-y-12"}`}>
         {skillCategories.map((category, catIdx) => (
           <div key={category.title} className="space-y-4">
             <h3 className={`font-semibold text-muted-foreground/80 pl-2 border-l-2 border-primary/50 ${compact ? "text-lg" : "text-xl"}`}>

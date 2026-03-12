@@ -26,7 +26,7 @@ export function Navigation() {
   }, [])
 
   const navItems = [
-    { label: "About Me", href: "/about" },
+    { label: "Skills", href: "/about" },
     { label: "Education", href: "/education" },
     { label: "Projects", href: "/projects" },
     { label: "Achievements", href: "/achievements" },
