@@ -32,8 +32,8 @@ export function HeroSection() {
   return (
     <section className="relative flex-1 flex items-center justify-center px-4 py-4">
       <div className="container mx-auto text-center">
-        <div className="glass-hero p-2 md:p-4 rounded-3xl max-w-4xl mx-auto">
-          <div className="space-y-6 md:space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+        <div className="glass-hero p-8 md:p-16 rounded-[2.5rem] max-w-6xl mx-auto">
+          <div className="space-y-8 md:space-y-14 animate-in fade-in slide-in-from-bottom-4 duration-1000">
             {/* Greeting Badge - Top Center */}
             {greeting && (
               <div className="flex justify-center items-center gap-2 mb-6 animate-in fade-in slide-in-from-top duration-700">
@@ -53,7 +53,7 @@ export function HeroSection() {
               {/* Profile Photo */}
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full opacity-75 group-hover:opacity-100 blur transition duration-300"></div>
-                <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-background">
+                <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-background">
                   <img
                     src="/Kaushal_1.jpeg"
                     alt="Kaushal Loya"
@@ -64,13 +64,13 @@ export function HeroSection() {
 
               {/* Name and Title */}
               <div className="flex flex-col items-center md:items-start text-center md:text-left">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
                   <span className="text-gradient">Kaushal Loya</span>
                 </h1>
-                <div className="h-6 md:h-8 mt-1">
+                <div className="h-8 md:h-10 mt-2">
                   <p
                     key={titleIndex}
-                    className="text-base md:text-xl text-muted-foreground animate-in fade-in slide-in-from-bottom-2 duration-500"
+                    className="text-xl md:text-2xl text-muted-foreground animate-in fade-in slide-in-from-bottom-2 duration-500"
                   >
                     {titles[titleIndex]}
                   </p>
@@ -78,7 +78,7 @@ export function HeroSection() {
               </div>
             </div>
 
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Building scalable, intelligent systems that solve real-world problems
             </p>
 

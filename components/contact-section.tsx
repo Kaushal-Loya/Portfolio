@@ -13,20 +13,15 @@ export function ContactSection() {
               <h2 className="text-3xl md:text-5xl font-bold">
                 Get In <span className="text-gradient">Touch</span>
               </h2>
-              <p className="text-lg text-muted-foreground">
-                Have a project in mind? Let's build something amazing together.
+              <p className="text-muted-foreground leading-relaxed text-center">
+                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
+                vision.
               </p>
             </div>
 
             <div className="max-w-2xl mx-auto">
               <SpotlightCard spotlightColor="rgba(0, 229, 255, 0.25)">
                 <div className="glass p-6 md:p-8 rounded-2xl space-y-4">
-                  <h3 className="text-2xl font-semibold text-center">Connect With Me</h3>
-                  <p className="text-muted-foreground leading-relaxed text-center">
-                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
-                    vision.
-                  </p>
-
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                     <a
                       href="mailto:kaushalloya5@gmail.com"

@@ -17,19 +17,7 @@ export function AboutSection({ compact = false, hideHeader = false }: AboutSecti
       <SpotlightCard spotlightColor="rgba(0, 229, 255, 0.25)">
         <div className={`glass rounded-2xl space-y-6 ${compact ? "p-6" : "p-8 md:p-12"}`}>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-balance">
-            I'm a Computer Science & Engineering student who enjoys solving problems and building software that is simple, clean,
-            and useful. I like understanding how things work and turning ideas into working solutions through code.
-          </p>
-
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-balance">
-            I mainly work on building scalable applications and exploring how software and artificial intelligence come together.
-            Whether it's designing a user-friendly interface or writing reliable backend logic, I enjoy the entire development
-            process.
-          </p>
-
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-balance">
-            I'm currently looking for opportunities to learn, collaborate with motivated teams, and contribute to projects that
-            create real-world impact.
+            I'm a Computer Science & Engineering student who enjoys solving problems and building simple, clean, and useful software. I like understanding how systems work and turning ideas into practical solutions through code, with a focus on scalable applications and the intersection of software and artificial intelligence. I'm currently seeking opportunities to learn, collaborate with motivated teams, and contribute to projects that create real-world impact.
           </p>
         </div>
       </SpotlightCard>
